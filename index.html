@@ -1,545 +1,377 @@
-import { useState } from "react";
-
-const semanas = [
-  {
-    num: 1,
-    tema: "Impacto da Guerra no Oriente Médio nas Embalagens",
-    dias: [
-      {
-        dia: "Segunda", data: "Primeira publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Vídeo", categoria: "guerra",
-            titulo: "O que a guerra no Oriente Médio tem a ver com o preço das embalagens plásticas?",
-            gravacao: "GRAVAR",
-            copy: {
-              duracao: "60-90 segundos",
-              tom: "Direto e analítico. Márcio fala como empresário que entende o mercado. Totalmente imparcial sobre o conflito.",
-              roteiro: [
-                "GANCHO (0-3s): 'Uma escalada no Oriente Médio acontece e semanas depois o preço da embalagem do seu supermercado sobe. Parece exagero? Não é.'",
-                "DESENVOLVIMENTO (4-55s): 'O plástico vem do petróleo. Quando há conflito na região — seja qual for o lado envolvido — o que muda para o empresário brasileiro é o preço do barril. Quando o barril sobe, a nafta fica mais cara. Quando a nafta sobe, a resina plástica sobe. E quando a resina sobe, a embalagem sobe. Essa correia de transmissão leva de 30 a 90 dias para chegar até o varejo. Então quando você vê uma escalada no conflito, já comece a se preparar.'",
-                "CTA (56-75s): 'É por isso que eu acompanho geopolítica aqui. Não é curiosidade — é gestão. Comenta: você já sentiu esse impacto no custo da sua embalagem?'"
-              ],
-              legenda: "O que acontece no Oriente Médio chega até o seu supermercado. 🌍\n\nA conexão entre instabilidade geopolítica e custo de embalagem é real — e entendê-la é o que separa o empresário reativo do estratégico.\n\nCompartilha com um empresário que precisa saber disso. 👇\n\n#OrienteMédio #Geopolítica #EmbalagemPlástica #Petróleo #VarejoNordeste #Implasverde #EmpresárioNordestino"
-            }
-          },
-          {
-            plataforma: "YouTube Shorts", tipo: "Short", categoria: "reaproveitamento",
-            titulo: "Reaproveitamento do vídeo do feed",
-            gravacao: "REAPROVEITAMENTO",
-            copy: { duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed. Publicar sem edição adicional."], legenda: "Mesma legenda do Instagram." }
-          },
-        ]
-      },
-      {
-        dia: "Quinta", data: "Segunda publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Carrossel", categoria: "implasverde",
-            titulo: "5 tipos de embalagens plásticas que sua loja já usa (e talvez não saiba nomear)",
-            gravacao: "ARTE",
-            copy: {
-              duracao: "6 slides",
-              tom: "Educativo e visual. Uma informação por slide, fonte grande, fundo escuro.",
-              roteiro: [
-                "SLIDE 1 — CAPA: '5 tipos de embalagens plásticas que sua loja já usa — e talvez não saiba nomear'",
-                "SLIDE 2: 'Sacola de caixa' — A mais usada no varejo. Serve para o cliente sair da loja com as compras. Precisa ter resistência, alça firme e pode ter a sua marca impressa.",
-                "SLIDE 3: 'Saco de FLV' — Usado na seção de frutas, legumes e verduras. Fino, resistente e ideal para pesagem. Reduz desperdício e facilita o manuseio.",
-                "SLIDE 4: 'Saco de açougue/peixaria' — Barreira contra umidade e odor. A espessura correta garante segurança alimentar e evita vazamentos.",
-                "SLIDE 5: 'Saco de padaria' — Neutro ou impresso, preserva a crocância e valoriza o produto. É o detalhe que faz diferença na percepção da qualidade.",
-                "SLIDE 6 — CTA: 'A Implasverde tem todos esses tipos — e indica a solução certa para cada seção do seu supermercado.' + contato e logo"
-              ],
-              legenda: "Quantos desses tipos de embalagem você usa no seu supermercado? 📦\n\nCada seção tem uma necessidade diferente — e usar a embalagem errada pode significar desperdício, reclamação de cliente ou custo desnecessário.\n\nSalva esse carrossel para consultar na hora da compra. 👆\n\n#EmbalagemPlástica #VarejoSupermercadista #Implasverde #EmbalagensFlexíveis #Supermercado #NordesteBrasil"
-            }
-          },
-        ]
-      },
-    ]
-  },
-  {
-    num: 2,
-    tema: "Implasverde em Foco + Tensão no Estreito de Ormuz",
-    dias: [
-      {
-        dia: "Segunda", data: "Terceira publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Vídeo", categoria: "guerra",
-            titulo: "Por que todo empresário deveria acompanhar o preço do petróleo?",
-            gravacao: "GRAVAR",
-            copy: {
-              duracao: "60-80 segundos",
-              tom: "Reflexivo e estratégico. Márcio fala como empresário que pensa no longo prazo. Foco no impacto econômico, sem tomar partido no conflito.",
-              roteiro: [
-                "GANCHO (0-3s): 'Todo dia de manhã eu acompanho o preço do petróleo antes de tomar qualquer decisão de negócio. E se você é empresário, deveria fazer o mesmo.'",
-                "DESENVOLVIMENTO (4-55s): 'O petróleo está na base de quase tudo que movimenta a economia: combustível, frete, matéria-prima industrial, energia. Quando o preço do barril sobe — por tensão geopolítica, por sanção econômica, por qualquer instabilidade em regiões produtoras — a cadeia toda sente. O custo sobe. O prazo aumenta. A margem aperta. Quem acompanha esse indicador antecipa movimentos. Quem ignora é pego de surpresa. Não é preciso entender de geopolítica — é preciso entender o que os movimentos do mundo fazem com o seu custo operacional.'",
-                "CTA (56-75s): 'Esse é o tipo de visão que eu trago aqui toda semana. Me segue para não perder. Comenta: você acompanha o preço do petróleo no seu dia a dia?'"
-              ],
-              legenda: "Gestão estratégica começa com informação. 📊\n\nO preço do petróleo é um dos indicadores mais importantes para qualquer empresário — independente do setor. Entender como ele se move é vantagem competitiva real.\n\n#Petróleo #GestãoEmpresarial #Geopolítica #Economia #EmpresáriosBrasileiros #Implasverde"
-            }
-          },
-          {
-            plataforma: "YouTube Shorts", tipo: "Short", categoria: "reaproveitamento",
-            titulo: "Reaproveitamento do vídeo do feed",
-            gravacao: "REAPROVEITAMENTO",
-            copy: { duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
-          },
-        ]
-      },
-      {
-        dia: "Quarta", data: "Quarta publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Vídeo", categoria: "guerra",
-            titulo: "Estreito de Ormuz: o gargalo que pode encarecer tudo que você vende no supermercado",
-            gravacao: "GRAVAR",
-            copy: {
-              duracao: "60-80 segundos",
-              tom: "Didático e objetivo. Explica um conceito geoeconômico de forma simples, sem juízo de valor sobre os países envolvidos.",
-              roteiro: [
-                "GANCHO (0-3s): 'Existe um trecho de mar de menos de 40 km de largura que, se fechar, encarece quase tudo que você vende no seu supermercado. Esse lugar se chama Estreito de Ormuz.'",
-                "DESENVOLVIMENTO (4-55s): 'Cerca de 20% de todo o petróleo do mundo passa por esse estreito. Ele fica entre o Irã e os Emirados Árabes — uma das regiões mais estratégicas do planeta do ponto de vista econômico. Quando há tensão política ou militar na área, o mercado global reage imediatamente: o preço do petróleo sobe. E quando o petróleo sobe, sobe também a resina plástica, o combustível, o frete e os alimentos. Tudo isso chega direto na sua operação — seja você dono de supermercado, indústria ou qualquer outro negócio.'",
-                "CTA (56-75s): 'Você sabia disso? Comenta aqui. Me segue — toda semana eu explico como o mercado global impacta o seu negócio no Nordeste.'"
-              ],
-              legenda: "40 km de mar que influenciam o preço de quase tudo. 🌊\n\nO Estreito de Ormuz é um dos pontos mais estratégicos do comércio global de petróleo — e qualquer instabilidade econômica ou política na região chega ao varejo nordestino em forma de custo mais alto.\n\nVocê sabia disso? Comenta aqui. 👇\n\n#EstreitodeOrmuz #OrienteMédio #Petróleo #VarejoNordeste #Geopolítica #Implasverde #EmpresárioNordestino"
-            }
-          },
-          {
-            plataforma: "YouTube Shorts", tipo: "Short", categoria: "reaproveitamento",
-            titulo: "Reaproveitamento do vídeo do feed",
-            gravacao: "REAPROVEITAMENTO",
-            copy: { duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
-          },
-        ]
-      },
-      {
-        dia: "Sexta", data: "Quinto conteúdo",
-        publicacoes: [
-          {
-            plataforma: "YouTube", tipo: "Vídeo Longo", categoria: "youtube",
-            titulo: "Como a Guerra no Oriente Médio afeta o varejo supermercadista brasileiro",
-            gravacao: "GRAVAR (horizontal)",
-            copy: {
-              duracao: "10-12 minutos",
-              tom: "Aprofundado e analítico. Márcio em ambiente profissional. Abordagem econômica e imparcial — foco no impacto para o empresário brasileiro, sem opinião sobre os lados do conflito.",
-              roteiro: [
-                "ABERTURA (0-1min): 'Nesse vídeo eu vou te mostrar, passo a passo, como uma instabilidade no Oriente Médio chega até o preço da embalagem do supermercado de Fortaleza, Recife ou Salvador. É um caminho que poucos empresários conhecem — e entender isso pode mudar a forma como você compra e precifica.'",
-                "BLOCO 1 — O conflito em contexto econômico (1-3min): 'Não vou entrar no mérito de quem está certo ou errado nesse conflito — isso não é o que importa para o empresário. O que importa é entender os atores econômicos envolvidos: o Irã é um dos maiores produtores de petróleo do mundo. Israel é uma potência tecnológica no coração do Oriente Médio. Os EUA têm interesses militares e econômicos profundos na região. Quando esses três entram em tensão, o mercado de energia global sente imediatamente.'",
-                "BLOCO 2 — O Estreito de Ormuz e as rotas marítimas (3-5min): 'Cerca de 20% do petróleo mundial passa pelo Estreito de Ormuz. Qualquer ameaça de bloqueio dessa rota — seja por conflito, seja por sanção — eleva o custo do seguro marítimo, reduz a oferta e faz o preço do barril subir. Em 2026 já vimos isso acontecer mais de uma vez.'",
-                "BLOCO 3 — Do petróleo à embalagem (5-8min): 'Petróleo refinado gera nafta. Nafta processada gera resina plástica — PP, PE, PET. Resina plástica é a matéria-prima de toda embalagem flexível. Quando o barril sobe, a resina sobe. Quando a resina sobe, a embalagem sobe. Esse caminho leva de 30 a 90 dias para chegar ao varejo nordestino. Então quando você vê tensão no Oriente Médio, já comece a se planejar.'",
-                "BLOCO 4 — O que o empresário pode fazer (8-10min): 'Três estratégias práticas: 1) Monitorar o preço do petróleo semanalmente — existem apps gratuitos para isso. 2) Antecipar compras de embalagem quando o cenário sinalizar alta. 3) Manter relacionamento com um fornecedor que monitore esse mercado por você — como a Implasverde faz com nossos clientes.'",
-                "FECHAMENTO (10-12min): 'A Implasverde monitora esse cenário diariamente para proteger nossos clientes de surpresas no custo e no prazo. Se você quer um fornecedor estratégico de embalagens para o seu supermercado, o link está na descrição. Se inscreve no canal e ativa o sino — toda semana tem conteúdo como esse.'"
-              ],
-              legenda: "O guia completo para entender como a instabilidade no Oriente Médio chega até o seu supermercado. 🌍\n\nNesse vídeo eu explico o caminho inteiro — do cenário geopolítico ao preço da embalagem no varejo nordestino — com foco no que realmente importa para o empresário brasileiro.\n\n00:00 Introdução\n01:00 O conflito em contexto econômico\n03:00 O Estreito de Ormuz e as rotas marítimas\n05:00 Do petróleo à embalagem\n08:00 O que o empresário pode fazer\n10:00 Como a Implasverde protege o cliente"
-            }
-          },
-        ]
-      },
-    ]
-  },
-  {
-    num: 3,
-    tema: "Soluções Implasverde + Embalagem e Sustentabilidade",
-    dias: [
-      {
-        dia: "Segunda", data: "Sexta publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Vídeo", categoria: "implasverde",
-            titulo: "Sacola, saco ou embalagem flexível? Entenda a diferença e como escolher certo",
-            gravacao: "GRAVAR",
-            copy: {
-              duracao: "60-80 segundos",
-              tom: "Didático e prático. Márcio pode segurar cada tipo de embalagem enquanto explica.",
-              roteiro: [
-                "GANCHO (0-3s): 'Sacola, saco e embalagem flexível não são a mesma coisa — e comprar errado pode sair mais caro do que você imagina.'",
-                "DESENVOLVIMENTO (4-55s): 'Sacola: é o que o cliente usa na saída do caixa. Tem alça, precisa de resistência e é onde a sua marca aparece. Saco: usado dentro da loja — no açougue, na padaria, no hortifrúti. Precisa de espessura e vedação adequadas para cada produto. Embalagem flexível: é a solução personalizada — para granel, congelados, delivery, produto com marca própria. Cada uma tem uma aplicação específica. Usar a errada significa desperdício de material, reclamação de cliente ou custo desnecessário.'",
-                "CTA (56-75s): 'A Implasverde tem todas essas soluções e nosso time indica a embalagem certa para cada seção do seu supermercado. Me conta nos comentários qual você usa hoje.'"
-              ],
-              legenda: "Você está comprando a embalagem certa para cada seção do seu supermercado? 🛒\n\nA escolha correta reduz desperdício, melhora a apresentação do produto e protege a sua marca — sem aumentar custo.\n\nComenta aqui qual tipo você usa mais. 👇\n\n#EmbalagemFlexível #Sacolas #SacoPlástico #VarejoNordeste #Supermercado #Implasverde #EmbalagensPersonalizadas"
-            }
-          },
-          {
-            plataforma: "YouTube Shorts", tipo: "Short", categoria: "reaproveitamento",
-            titulo: "Reaproveitamento do vídeo do feed",
-            gravacao: "REAPROVEITAMENTO",
-            copy: { duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
-          },
-        ]
-      },
-      {
-        dia: "Quarta", data: "Sétima publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Carrossel", categoria: "guerra",
-            titulo: "Como a alta do petróleo afeta o preço de tudo que você vende no supermercado",
-            gravacao: "ARTE",
-            copy: {
-              duracao: "7 slides",
-              tom: "Educativo e econômico. Foco no impacto para o varejista — sem entrar no mérito do conflito em si.",
-              roteiro: [
-                "SLIDE 1 — CAPA: 'Como a alta do petróleo afeta o preço de tudo que você vende no supermercado'",
-                "SLIDE 2: 'Tudo começa no barril de petróleo' — Quando o preço do barril sobe no mercado internacional, uma reação em cadeia começa. Combustível, matéria-prima industrial e frete são os primeiros a sentir.",
-                "SLIDE 3: 'O frete encarece' — Caminhões, navios e aviões rodam a combustível derivado de petróleo. Quando o barril sobe, o frete sobe junto — e o custo de transporte de tudo que chega ao seu supermercado aumenta.",
-                "SLIDE 4: 'A embalagem fica mais cara' — Embalagens plásticas são feitas de resina derivada do petróleo. Alta no barril = alta na resina = alta na embalagem. Esse impacto chega ao varejo em 30 a 90 dias.",
-                "SLIDE 5: 'Os alimentos industrializados sobem' — Indústrias de alimentos também usam embalagens, energia e frete. Quando esses custos sobem, o preço do produto na gôndola sobe junto.",
-                "SLIDE 6: 'O dólar tende a subir junto' — Instabilidade global valoriza o dólar frente ao real. Produtos importados e insumos cotados em dólar ficam mais caros — impactando toda a cadeia do varejo.",
-                "SLIDE 7 — CTA: 'Entender esse mecanismo é o primeiro passo para se antecipar e proteger a margem do seu negócio. Acompanhe esse tipo de análise aqui.' + logo Implasverde"
-              ],
-              legenda: "Quando o petróleo sobe no mercado internacional, o impacto chega até a gôndola do seu supermercado — mas poucos empresários entendem esse caminho. 🛢️\n\nSalva esse carrossel e compartilha com quem precisa entender essa dinâmica. 👆\n\n#Petróleo #VarejoSupermercadista #GestãoEmpresarial #EmbalagemPlástica #Implasverde #Economia #Supermercado"
-            }
-          },
-        ]
-      },
-      {
-        dia: "Sexta", data: "Oitava publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Carrossel", categoria: "implasverde",
-            titulo: "Embalagem plástica x sustentabilidade: o que você precisa saber antes de decidir",
-            gravacao: "ARTE",
-            copy: {
-              duracao: "6 slides",
-              tom: "Sóbrio e informativo. Visual com dados e tipografia limpa.",
-              roteiro: [
-                "SLIDE 1 — CAPA: 'Embalagem plástica x sustentabilidade: o debate que todo varejista precisa entender'",
-                "SLIDE 2: 'O plástico tem um problema de descarte — não de uso' — O plástico é um material eficiente, leve e seguro. O problema está no descarte incorreto. A embalagem certa, descartada corretamente, tem impacto muito menor do que parece.",
-                "SLIDE 3: 'Embalagem plástica desperdiça menos alimento' — Estudos mostram que embalagens plásticas preservam alimentos por mais tempo, reduzindo o desperdício — um dos maiores problemas ambientais do varejo.",
-                "SLIDE 4: 'O plástico reciclável já existe — e a Implasverde trabalha com ele' — Parte das resinas utilizadas na produção já admite reciclagem. O setor avança para soluções mais sustentáveis sem abrir mão da qualidade.",
-                "SLIDE 5: 'A pressão regulatória vem aí — se prepare' — Legislações sobre embalagem plástica estão avançando no Brasil. Conhecer as alternativas hoje é vantagem competitiva amanhã.",
-                "SLIDE 6 — CTA: 'A Implasverde acompanha essas tendências para oferecer sempre a melhor solução para o seu negócio.' + contato e logo"
-              ],
-              legenda: "O debate sobre sustentabilidade e plástico é complexo — e o varejista precisa entender os dois lados antes de tomar decisão. ♻️\n\nA Implasverde trabalha com soluções que equilibram qualidade, custo e responsabilidade ambiental.\n\nSalva esse carrossel e compartilha com quem precisa ver. 👆\n\n#Sustentabilidade #EmbalagemPlástica #Reciclagem #VarejoNordeste #Implasverde #EmbalagemSustentável"
-            }
-          },
-        ]
-      },
-    ]
-  },
-  {
-    num: 4,
-    tema: "Autoridade + Fechamento do Mês",
-    dias: [
-      {
-        dia: "Segunda", data: "Nona publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Vídeo", categoria: "implasverde",
-            titulo: "Como a Implasverde garante fornecimento mesmo com crise no petróleo",
-            gravacao: "GRAVAR",
-            copy: {
-              duracao: "60-80 segundos",
-              tom: "Confiante e estratégico. Márcio fala como empresário que resolve problemas.",
-              roteiro: [
-                "GANCHO (0-3s): 'O petróleo subiu, o dólar subiu, a tensão no Oriente Médio aumentou — então por que a Implasverde continuou entregando no prazo e com preço estável? Eu vou te contar.'",
-                "DESENVOLVIMENTO (4-55s): 'A gente monitora o mercado de commodities com antecedência. Quando vemos sinal de alta no petróleo — seja por instabilidade geopolítica, seja por variação cambial — antecipamos a compra de resina. Formamos estoque estratégico. Isso nos permite absorver parte da variação sem repassar tudo ao cliente de uma vez. Além disso, nossa produção é aqui no Nordeste. Não dependemos de produto importado acabado — só de matéria-prima. Isso nos dá vantagem real em prazo e custo de frete para o varejo da região.'",
-                "CTA (56-75s): 'Se você quer um fornecedor que pensa junto com o seu negócio e não te deixa na mão na hora da crise — fala com a Implasverde. Link na bio.'"
-              ],
-              legenda: "Na crise, o fornecedor certo faz toda a diferença. 📊\n\nA Implasverde monitora o mercado global para proteger o varejo nordestino de surpresas no custo e no prazo de embalagens.\n\nQuer saber como podemos ser seu fornecedor estratégico? Me manda uma mensagem. 👇\n\n#Implasverde #EmbalagemPlástica #VarejoNordeste #LogísticaNordeste #Fornecedor #NordesteBrasil #Supermercado"
-            }
-          },
-          {
-            plataforma: "YouTube Shorts", tipo: "Short", categoria: "reaproveitamento",
-            titulo: "Reaproveitamento do vídeo do feed",
-            gravacao: "REAPROVEITAMENTO",
-            copy: { duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
-          },
-        ]
-      },
-      {
-        dia: "Quarta", data: "Décima publicação",
-        publicacoes: [
-          {
-            plataforma: "Instagram Feed", tipo: "Carrossel", categoria: "implasverde",
-            titulo: "7 vantagens de comprar embalagens direto da indústria (sem intermediários)",
-            gravacao: "ARTE",
-            copy: {
-              duracao: "8 slides",
-              tom: "Tom de consultoria. Cada vantagem com visual simples e argumento objetivo.",
-              roteiro: [
-                "SLIDE 1 — CAPA: '7 vantagens de comprar embalagens direto da indústria — sem intermediários'",
-                "SLIDE 2: 'Preço de fábrica' — Sem margem de distribuidor ou representante. O que você paga vai direto para o produto, não para o intermediário.",
-                "SLIDE 3: 'Personalização real' — Sua marca impressa, espessura sob medida, tamanho ideal para o seu produto. Só a indústria consegue fazer isso.",
-                "SLIDE 4: 'Estoque disponível' — Indústria produz sob demanda e mantém estoque. Distribuidor depende do que tem em prateleira.",
-                "SLIDE 5: 'Prazo previsível' — Você fala com quem produz. Não tem repasse de informação, não tem surpresa de prazo.",
-                "SLIDE 6: 'Relacionamento direto' — Quando tem problema, você fala com quem resolve. Sem passar por três pessoas antes de ter uma resposta.",
-                "SLIDE 7: 'Planejamento conjunto' — A indústria consegue planejar sua demanda, antecipar variações de preço e te avisar antes que o mercado te pegue de surpresa.",
-                "SLIDE 8 — CTA: 'A Implasverde é indústria, no Nordeste, atendendo o varejo supermercadista. Pede seu orçamento.' + contato"
-              ],
-              legenda: "Cada intermediário entre você e a indústria custa dinheiro do seu bolso — todo mês. 💰\n\nComprar direto da Implasverde significa preço de fábrica, produto personalizado e atendimento de quem realmente conhece o que fabrica.\n\nSalva esse carrossel e compartilha com quem cuida das compras do seu supermercado. 👆\n\n#Implasverde #EmbalagemPersonalizada #VarejoNordeste #ComprasDiretasDaIndústria #Supermercado #NordesteBrasil"
-            }
-          },
-        ]
-      },
-      {
-        dia: "Sexta", data: "Décima primeira e décima segunda publicações",
-        publicacoes: [
-          {
-            plataforma: "YouTube", tipo: "Vídeo Longo", categoria: "youtube",
-            titulo: "Embalagem personalizada: o que é, como funciona e por que pode transformar o seu negócio",
-            gravacao: "GRAVAR (horizontal)",
-            copy: {
-              duracao: "12-15 minutos",
-              tom: "Técnico e educativo, mas acessível. Márcio fala como especialista do setor. Pode usar embalagens físicas como apoio visual durante o vídeo.",
-              roteiro: [
-                "ABERTURA (0-1min): 'Nesse vídeo eu vou te mostrar algo que a maioria dos varejistas nunca parou para pensar: a embalagem que você coloca no produto é a última comunicação que a sua marca tem com o cliente. E quando ela é personalizada, ela vende sozinha. Vou te explicar como funciona, quanto custa e por que vale a pena.'",
-                "BLOCO 1 — O que é embalagem personalizada (1-3min): 'Embalagem personalizada não significa necessariamente embalagem cara ou complexa. Significa uma embalagem desenvolvida para o seu produto, com as suas medidas, a sua identidade visual e as suas especificações técnicas. Pode ser uma sacola com o logo da sua loja, um saco de padaria com a sua marca ou uma embalagem de açougue na espessura certa para o seu corte. A personalização começa onde a embalagem genérica termina.'",
-                "BLOCO 2 — Tipos de personalização possíveis (3-6min): 'Existem diferentes níveis de personalização — e cada um atende uma necessidade diferente: 1) Impressão de marca e identidade visual. 2) Dimensões sob medida para o produto. 3) Espessura e resistência específica por aplicação. 4) Cor, acabamento e textura. 5) Texto regulatório ou informativo impresso. Cada camada de personalização agrega valor percebido ao produto e à marca.'",
-                "BLOCO 3 — Impacto no negócio (6-9min): 'Três impactos diretos da embalagem personalizada no seu negócio: 1) Experiência do cliente — a embalagem é parte do produto. Um cliente que recebe o pedido bem embalado com a sua marca tende a voltar e indicar. 2) Redução de desperdício — embalagem com dimensão certa gera menos sobra e menos custo de descarte. 3) Diferenciação competitiva — no varejo, onde produtos similares concorrem lado a lado, a embalagem é um diferencial visual imediato.'",
-                "BLOCO 4 — Como calcular se vale a pena (9-12min): 'A pergunta que todo varejista faz é: o custo a mais da personalização se paga? A resposta depende do volume e da estratégia. Em geral, a personalização começa a ser viável a partir de determinados volumes mínimos de pedido. O cálculo deve considerar: custo por unidade, impacto na percepção de marca, diferença no ticket médio e fidelização de cliente. Quem já usa embalagem personalizada raramente volta para a genérica.'",
-                "FECHAMENTO (12-15min): 'A embalagem personalizada não é luxo — é estratégia. Se você quer entender se faz sentido para o seu negócio, o primeiro passo é uma conversa com quem produz. Sem compromisso. O link está na descrição. Se inscreve no canal — tem muito mais conteúdo técnico sobre embalagens vindo por aí.'"
-              ],
-              legenda: "A embalagem que você usa no seu produto diz muito sobre a sua marca — e a personalizada diz ainda mais. 📦\n\nNesse vídeo eu explico como funciona a embalagem personalizada, os tipos disponíveis e como calcular se vale a pena para o seu negócio.\n\n00:00 Introdução\n01:00 O que é embalagem personalizada\n03:00 Tipos de personalização possíveis\n06:00 Impacto no negócio\n09:00 Como calcular se vale a pena\n12:00 Próximos passos"
-            }
-          },
-          {
-            plataforma: "Instagram Feed", tipo: "Vídeo", categoria: "guerra",
-            titulo: "O que esperar do Oriente Médio no próximo mês: análise econômica rápida",
-            gravacao: "GRAVAR",
-            copy: {
-              duracao: "70-90 segundos",
-              tom: "Ágil e analítico. Foco no impacto econômico para o empresário. Sem tomar partido sobre os lados do conflito.",
-              roteiro: [
-                "GANCHO (0-3s): 'O que aconteceu no Oriente Médio esse mês — e o que isso significa para o seu negócio. Em menos de 2 minutos.'",
-                "DESENVOLVIMENTO (4-60s): '[Adaptar com os eventos reais do mês — sempre com foco no impacto econômico: variação do petróleo, do dólar, das rotas de navegação, dos fretes]. Conectar ao custo das embalagens e ao varejo nordestino. Indicar o que monitorar no mês seguinte.'",
-                "CTA (61-80s): 'No mês que vem continuo trazendo essa análise econômica. Me segue para não perder. E comenta: como esse cenário está chegando no seu negócio?'"
-              ],
-              legenda: "A análise econômica do Oriente Médio que todo empresário nordestino precisa ter visto esse mês. 🌍\n\n[Adaptar com os principais impactos econômicos do mês]\n\nComenta como esse cenário está chegando no seu negócio. 👇\n\n#OrienteMédio #AnáliseEconômica #EmpresárioNordestino #VarejoNordeste #Petróleo #Implasverde"
-            }
-          },
-        ]
-      },
-    ]
-  },
-];
-
-const catColor = { implasverde: "#e5e5e5", guerra: "#888", youtube: "#aaa", reaproveitamento: "#2a2a2a" };
-const catLabel = { implasverde: "IMPLASVERDE", guerra: "ORIENTE MÉDIO", youtube: "YOUTUBE LONGO", reaproveitamento: "REAPROVEITAMENTO" };
-const gravLabel = { "GRAVAR": "🎬 GRAVAR", "REAPROVEITAMENTO": "♻️ REAPROVEITAMENTO", "ARTE": "🎨 ARTE", "GRAVAR (horizontal)": "🎬 GRAVAR HORIZONTAL" };
-
-const storiesOrientacoes = [
-  {
-    icone: "🌍",
-    titulo: "Notícias do Oriente Médio",
-    descricao: "Sempre que surgir uma notícia relevante sobre o conflito — variação do petróleo, sanções, movimentos diplomáticos — publique nos stories com uma opinião rápida de 2 a 3 linhas. Foco no impacto econômico para o empresário brasileiro. Mantenha imparcialidade sobre os lados do conflito."
-  },
-  {
-    icone: "🏭",
-    titulo: "Rotina de trabalho na Implasverde",
-    descricao: "Fotos e vídeos curtos do dia a dia da fábrica: linha de produção, embalagens sendo fabricadas, equipe em ação, processo de entrega. Humaniza a empresa e gera proximidade com o cliente. Não precisa ser produção profissional — celular está ótimo."
-  },
-  {
-    icone: "👨‍👩‍👧‍👦",
-    titulo: "Momentos com a família",
-    descricao: "Fotos com a família — almoço de domingo, viagem, aniversário, momento de lazer. Humaniza o Márcio como pessoa, não só como empresário. Gera identificação com outros empreendedores que também equilibram família e negócio."
-  },
-  {
-    icone: "🏃",
-    titulo: "Esportes e estilo de vida",
-    descricao: "Fotos ou vídeos praticando esportes — academia, corrida, futebol, qualquer atividade. Transmite disciplina, energia e saúde — atributos que o público associa a lideranças de negócio. Pode usar frases curtas de motivação empresarial como legenda."
-  },
-  {
-    icone: "💬",
-    titulo: "Engajamento e interação",
-    descricao: "Enquetes de opinião sobre temas do mercado, caixas de perguntas sobre embalagens ou geopolítica, contagem regressiva para publicações novas. Use pelo menos 2 elementos interativos por semana para manter o algoritmo ativo."
-  },
-  {
-    icone: "📦",
-    titulo: "Produtos e bastidores Implasverde",
-    descricao: "Fotos de embalagens prontas, novos produtos, processo de personalização, amostras para clientes. Conteúdo comercial leve — não é anúncio, é bastidor. Pode incluir depoimento rápido de cliente filmado na visita ou enviado por mensagem."
-  },
-];
-
-function Card({ pub }) {
-  const [aberto, setAberto] = useState(false);
-  const isReap = pub.categoria === "reaproveitamento";
-  return (
-    <div style={{ background: "#0f0f0f", border: "1px solid #1a1a1a", borderRadius: 10, marginBottom: 10, overflow: "hidden" }}>
-      <div style={{ padding: "16px 20px" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
-          <div style={{ flex: 1 }}>
-            <div style={{ display: "flex", gap: 12, marginBottom: 8, alignItems: "center", flexWrap: "wrap" }}>
-              <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 2, color: catColor[pub.categoria], textTransform: "uppercase" }}>{catLabel[pub.categoria]}</span>
-              <span style={{ fontSize: 9, color: "#222" }}>·</span>
-              <span style={{ fontSize: 9, color: "#333", letterSpacing: 1 }}>{pub.plataforma} · {pub.tipo}</span>
-            </div>
-            <p style={{ margin: 0, fontSize: 13, color: isReap ? "#333" : "#ccc", fontWeight: isReap ? 400 : 600, lineHeight: 1.4 }}>{pub.titulo}</p>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 8, flexShrink: 0 }}>
-            <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: 1, color: "#2a2a2a", textTransform: "uppercase" }}>{gravLabel[pub.gravacao]}</span>
-            {!isReap && (
-              <button onClick={() => setAberto(!aberto)} style={{
-                background: "none", border: "1px solid #222", borderRadius: 6,
-                padding: "4px 12px", fontSize: 9, color: "#444", cursor: "pointer", letterSpacing: 1, fontWeight: 700
-              }}>{aberto ? "FECHAR" : "VER COPY"}</button>
-            )}
-          </div>
-        </div>
-      </div>
-      {aberto && !isReap && (
-        <div style={{ borderTop: "1px solid #1a1a1a", padding: 20 }}>
-          <div style={{ display: "flex", gap: 16, marginBottom: 16, flexWrap: "wrap" }}>
-            <span style={{ fontSize: 9, color: "#444", letterSpacing: 1 }}>⏱ {pub.copy.duracao}</span>
-            {pub.copy.tom && <span style={{ fontSize: 9, color: "#333", letterSpacing: 1, maxWidth: 500 }}>TOM: {pub.copy.tom}</span>}
-          </div>
-          <p style={{ margin: "0 0 10px", fontSize: 9, color: "#333", letterSpacing: 2, fontWeight: 700, textTransform: "uppercase" }}>
-            {pub.tipo === "Carrossel" ? "ROTEIRO DOS SLIDES" : pub.tipo === "Vídeo Longo" ? "ROTEIRO DO VÍDEO YOUTUBE" : "ROTEIRO DO VÍDEO"}
-          </p>
-          {pub.copy.roteiro.map((linha, i) => (
-            <div key={i} style={{ display: "flex", gap: 14, marginBottom: 12 }}>
-              <span style={{ fontSize: 10, color: "#f97316", fontWeight: 700, flexShrink: 0, marginTop: 1 }}>{String(i + 1).padStart(2, "0")}</span>
-              <p style={{ margin: 0, fontSize: 12, color: "#666", lineHeight: 1.8 }}>{linha}</p>
-            </div>
-          ))}
-          <div style={{ marginTop: 20, padding: 16, background: "#080808", borderRadius: 8, borderLeft: "2px solid #1a1a1a" }}>
-            <p style={{ margin: "0 0 8px", fontSize: 9, color: "#333", letterSpacing: 2, fontWeight: 700, textTransform: "uppercase" }}>LEGENDA</p>
-            <p style={{ margin: 0, fontSize: 12, color: "#555", lineHeight: 1.9, whiteSpace: "pre-line" }}>{pub.copy.legenda}</p>
-          </div>
-        </div>
-      )}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Planejamento de Conteúdo — Implasverde | Agência Ângelo</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#080808;color:#e5e5e5;font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh}
+.stripe{height:3px;background:linear-gradient(90deg,#f97316,#ea580c)}
+.header{background:#0d0d0d;border-bottom:1px solid #1a1a1a;padding:32px 28px 28px}
+.header-inner{max-width:860px;margin:0 auto}
+.agency-label{font-size:10px;letter-spacing:3px;color:#f97316;font-weight:700;text-transform:uppercase;margin-bottom:12px}
+h1{font-size:24px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:6px}
+.subtitle{font-size:12px;color:#444;letter-spacing:2px;text-transform:uppercase}
+.stats{display:flex;gap:1px;margin-top:28px;background:#1a1a1a;border-radius:10px;overflow:hidden}
+.stat{flex:1;background:#0d0d0d;padding:16px 20px}
+.stat-label{font-size:9px;color:#333;letter-spacing:2px;font-weight:700;margin-bottom:6px}
+.stat-val{font-size:22px;font-weight:900;color:#fff}
+.container{max-width:860px;margin:0 auto;padding:32px 28px}
+.batch-note{background:#0d0d0d;border:1px solid #1a1a1a;border-left:2px solid #f97316;border-radius:10px;padding:18px;margin-bottom:28px}
+.batch-title{font-size:10px;color:#f97316;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.batch-text{font-size:12px;color:#555;line-height:1.9}
+.batch-text strong{color:#888}
+.tabs{display:flex;border-bottom:1px solid #1a1a1a;margin-bottom:28px}
+.tab-btn{background:none;border:none;border-bottom:2px solid transparent;color:#333;padding:12px 24px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .15s;margin-bottom:-1px}
+.tab-btn.active{color:#f97316;border-bottom-color:#f97316}
+.panel{display:none}
+.panel.active{display:block}
+.week-tabs{display:flex;border-bottom:1px solid #111;margin-bottom:24px}
+.week-btn{background:none;border:none;border-bottom:2px solid transparent;color:#2a2a2a;padding:10px 20px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;margin-bottom:-1px;transition:all .15s}
+.week-btn.active{color:#888;border-bottom-color:#333}
+.week-theme-label{font-size:9px;color:#333;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.week-theme{font-size:15px;color:#ccc;font-weight:600;margin-bottom:24px}
+.day-block{margin-bottom:24px}
+.day-label{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.day-bar{width:2px;height:14px;background:#1a1a1a;border-radius:2px}
+.day-text{font-size:10px;color:#333;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+.card{background:#0f0f0f;border:1px solid #1a1a1a;border-radius:10px;margin-bottom:10px;overflow:hidden}
+.card-header{padding:16px 20px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.card-meta{display:flex;gap:12px;margin-bottom:8px;align-items:center;flex-wrap:wrap}
+.cat-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+.card-platform{font-size:9px;color:#333;letter-spacing:1px}
+.card-title{font-size:13px;color:#ccc;font-weight:600;line-height:1.4}
+.card-title.reap{color:#333;font-weight:400}
+.card-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0}
+.grav-label{font-size:9px;font-weight:700;letter-spacing:1px;color:#2a2a2a;text-transform:uppercase}
+.copy-btn{background:none;border:1px solid #222;border-radius:6px;padding:4px 12px;font-size:9px;color:#444;cursor:pointer;letter-spacing:1px;font-weight:700}
+.copy-body{border-top:1px solid #1a1a1a;padding:20px;display:none}
+.copy-body.open{display:block}
+.copy-meta{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+.copy-meta span{font-size:9px;color:#444;letter-spacing:1px}
+.roteiro-title{font-size:9px;color:#333;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:10px}
+.roteiro-item{display:flex;gap:14px;margin-bottom:12px}
+.roteiro-num{font-size:10px;color:#f97316;font-weight:700;flex-shrink:0;margin-top:1px}
+.roteiro-text{font-size:12px;color:#666;line-height:1.8}
+.legenda-box{margin-top:20px;padding:16px;background:#080808;border-radius:8px;border-left:2px solid #1a1a1a}
+.legenda-label{font-size:9px;color:#333;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.legenda-text{font-size:12px;color:#555;line-height:1.9;white-space:pre-line}
+.week-summary{background:#0d0d0d;border:1px solid #111;border-radius:10px;padding:20px;margin-top:8px}
+.summary-label{font-size:9px;color:#2a2a2a;letter-spacing:2px;font-weight:700;text-transform:uppercase;margin-bottom:16px}
+.summary-grid{display:flex;gap:24px;flex-wrap:wrap}
+.summary-item p:first-child{font-size:9px;color:#333;letter-spacing:1px;margin-bottom:4px}
+.summary-item p:last-child{font-size:22px;font-weight:900;color:#fff}
+.stories-pending{background:#0d0d0d;border:1px solid #1a1a1a;border-left:2px solid #333;border-radius:10px;padding:24px;margin-bottom:24px}
+.stories-pending-tag{font-size:10px;color:#333;letter-spacing:3px;font-weight:700;text-transform:uppercase;margin-bottom:8px}
+.stories-pending-title{font-size:16px;font-weight:700;color:#555;margin-bottom:10px}
+.stories-pending-text{font-size:12px;color:#333;line-height:1.9}
+.orientacoes-label{font-size:9px;color:#333;letter-spacing:3px;font-weight:700;text-transform:uppercase;margin-bottom:16px}
+.orientacao-card{background:#0f0f0f;border:1px solid #1a1a1a;border-radius:10px;padding:16px 20px;display:grid;grid-template-columns:36px 1fr;gap:16px;margin-bottom:10px}
+.orientacao-icon{font-size:20px;padding-top:2px}
+.orientacao-title{font-size:12px;color:#ccc;font-weight:700;margin-bottom:6px}
+.orientacao-text{font-size:12px;color:#555;line-height:1.8}
+footer{border-top:1px solid #111;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+.footer-brand{font-size:10px;font-weight:800;color:#f97316;letter-spacing:2px}
+.footer-sub{font-size:10px;color:#1a1a1a;letter-spacing:1px}
+@media(max-width:600px){
+  .stats{flex-direction:column}
+  .week-tabs{overflow-x:auto}
+  h1{font-size:20px}
+  .card-header{flex-direction:column}
+  .card-right{flex-direction:row;align-items:center}
+  .summary-grid{gap:16px}
+}
+</style>
+</head>
+<body>
+<div class="stripe"></div>
+<div class="header">
+  <div class="header-inner">
+    <div class="agency-label">◆ Agência Ângelo</div>
+    <h1>Planejamento de Conteúdo</h1>
+    <div class="subtitle">Márcio Souza · Implasverde · 1 Mês Completo</div>
+    <div class="stats">
+      <div class="stat"><div class="stat-label">PUBLICAÇÕES ÚNICAS</div><div class="stat-val" id="total-pub">—</div></div>
+      <div class="stat"><div class="stat-label">VÍDEOS A GRAVAR</div><div class="stat-val" id="total-vid">—</div></div>
+      <div class="stat"><div class="stat-label">ARTES / CARROSSEIS</div><div class="stat-val" id="total-art">—</div></div>
+      <div class="stat"><div class="stat-label">DIAS DE GRAVAÇÃO</div><div class="stat-val">2</div></div>
     </div>
-  );
+  </div>
+</div>
+
+<div class="container">
+  <div class="batch-note">
+    <div class="batch-title">Estratégia de Gravação em Lote</div>
+    <div class="batch-text">
+      <strong>Dia 1 —</strong> Todos os vídeos verticais do mês em sequência (Instagram + Shorts).
+      <strong> Dia 2 —</strong> Os 2 vídeos horizontais longos do YouTube.
+      <strong> Artes e carrosseis —</strong> produzidos pela Agência Ângelo sem presença do Márcio.
+      <strong> Stories —</strong> espontâneos, feitos com celular no dia a dia.
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('feed')">Feed &amp; YouTube</button>
+    <button class="tab-btn" onclick="switchTab('stories')">Stories</button>
+  </div>
+
+  <div class="panel active" id="panel-feed">
+    <div class="week-tabs" id="week-tabs"></div>
+    <div class="week-theme-label">Tema da Semana</div>
+    <div class="week-theme" id="week-theme"></div>
+    <div id="week-content"></div>
+    <div class="week-summary">
+      <div class="summary-label" id="summary-label"></div>
+      <div class="summary-grid" id="summary-grid"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="panel-stories">
+    <div class="stories-pending">
+      <div class="stories-pending-tag">Em planejamento</div>
+      <div class="stories-pending-title">Estratégia de Stories</div>
+      <div class="stories-pending-text">O planejamento detalhado de stories está sendo alinhado internamente e em breve será disponibilizado aqui com roteiro semana a semana. Enquanto isso, utilize as orientações básicas abaixo para manter presença diária no perfil.</div>
+    </div>
+    <div class="orientacoes-label">Orientações básicas enquanto o planejamento não é finalizado</div>
+    <div id="stories-list"></div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-brand">◆ AGÊNCIA ÂNGELO</span>
+  <span class="footer-sub">IMPLASVERDE · PLANEJAMENTO MENSAL DE CONTEÚDO</span>
+</footer>
+
+<script>
+const data = {
+  semanas: [
+    {
+      num: 1, tema: "Impacto da Guerra no Oriente Médio nas Embalagens",
+      dias: [
+        { dia: "Segunda", data: "Primeira publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Vídeo", cat: "guerra", titulo: "O que a guerra no Oriente Médio tem a ver com o preço das embalagens plásticas?", grav: "GRAVAR",
+            duracao: "60-90 segundos", tom: "Direto e analítico. Márcio fala como empresário que entende o mercado. Totalmente imparcial sobre o conflito.",
+            roteiro: ["GANCHO (0-3s): 'Uma escalada no Oriente Médio acontece e semanas depois o preço da embalagem do seu supermercado sobe. Parece exagero? Não é.'","DESENVOLVIMENTO (4-55s): 'O plástico vem do petróleo. Quando há conflito na região — seja qual for o lado envolvido — o que muda para o empresário brasileiro é o preço do barril. Quando o barril sobe, a nafta fica mais cara. Quando a nafta sobe, a resina plástica sobe. E quando a resina sobe, a embalagem sobe. Essa correia de transmissão leva de 30 a 90 dias para chegar até o varejo. Então quando você vê uma escalada no conflito, já comece a se preparar.'","CTA (56-75s): 'É por isso que eu acompanho geopolítica aqui. Não é curiosidade — é gestão. Comenta: você já sentiu esse impacto no custo da sua embalagem?'"],
+            legenda: "O que acontece no Oriente Médio chega até o seu supermercado. 🌍\n\nA conexão entre instabilidade geopolítica e custo de embalagem é real — e entendê-la é o que separa o empresário reativo do estratégico.\n\nCompartilha com um empresário que precisa saber disso. 👇\n\n#OrienteMédio #Geopolítica #EmbalagemPlástica #Petróleo #VarejoNordeste #Implasverde #EmpresárioNordestino" },
+          { plat: "YouTube Shorts", tipo: "Short", cat: "reap", titulo: "Reaproveitamento do vídeo do feed", grav: "REAPROVEITAMENTO", duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed. Publicar sem edição adicional."], legenda: "Mesma legenda do Instagram." }
+        ]},
+        { dia: "Quinta", data: "Segunda publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Carrossel", cat: "implasverde", titulo: "5 tipos de embalagens plásticas que sua loja já usa (e talvez não saiba nomear)", grav: "ARTE",
+            duracao: "6 slides", tom: "Educativo e visual. Uma informação por slide, fonte grande, fundo escuro.",
+            roteiro: ["SLIDE 1 — CAPA: '5 tipos de embalagens plásticas que sua loja já usa — e talvez não saiba nomear'","SLIDE 2: 'Sacola de caixa' — A mais usada no varejo. Serve para o cliente sair da loja com as compras. Precisa ter resistência, alça firme e pode ter a sua marca impressa.","SLIDE 3: 'Saco de FLV' — Usado na seção de frutas, legumes e verduras. Fino, resistente e ideal para pesagem. Reduz desperdício e facilita o manuseio.","SLIDE 4: 'Saco de açougue/peixaria' — Barreira contra umidade e odor. A espessura correta garante segurança alimentar e evita vazamentos.","SLIDE 5: 'Saco de padaria' — Neutro ou impresso, preserva a crocância e valoriza o produto. É o detalhe que faz diferença na percepção da qualidade.","SLIDE 6 — CTA: 'A Implasverde tem todos esses tipos — e indica a solução certa para cada seção do seu supermercado.' + contato e logo"],
+            legenda: "Quantos desses tipos de embalagem você usa no seu supermercado? 📦\n\nCada seção tem uma necessidade diferente — e usar a embalagem errada pode significar desperdício, reclamação de cliente ou custo desnecessário.\n\nSalva esse carrossel para consultar na hora da compra. 👆\n\n#EmbalagemPlástica #VarejoSupermercadista #Implasverde #EmbalagensFlexíveis #Supermercado #NordesteBrasil" }
+        ]}
+      ]
+    },
+    {
+      num: 2, tema: "Implasverde em Foco + Tensão no Estreito de Ormuz",
+      dias: [
+        { dia: "Segunda", data: "Terceira publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Vídeo", cat: "guerra", titulo: "Por que todo empresário deveria acompanhar o preço do petróleo?", grav: "GRAVAR",
+            duracao: "60-80 segundos", tom: "Reflexivo e estratégico. Foco no impacto econômico, sem tomar partido no conflito.",
+            roteiro: ["GANCHO (0-3s): 'Todo dia de manhã eu acompanho o preço do petróleo antes de tomar qualquer decisão de negócio. E se você é empresário, deveria fazer o mesmo.'","DESENVOLVIMENTO (4-55s): 'O petróleo está na base de quase tudo que movimenta a economia: combustível, frete, matéria-prima industrial, energia. Quando o preço do barril sobe — por tensão geopolítica, por sanção econômica, por qualquer instabilidade em regiões produtoras — a cadeia toda sente. O custo sobe. O prazo aumenta. A margem aperta. Quem acompanha esse indicador antecipa movimentos. Quem ignora é pego de surpresa. Não é preciso entender de geopolítica — é preciso entender o que os movimentos do mundo fazem com o seu custo operacional.'","CTA (56-75s): 'Esse é o tipo de visão que eu trago aqui toda semana. Me segue para não perder. Comenta: você acompanha o preço do petróleo no seu dia a dia?'"],
+            legenda: "Gestão estratégica começa com informação. 📊\n\nO preço do petróleo é um dos indicadores mais importantes para qualquer empresário — independente do setor. Entender como ele se move é vantagem competitiva real.\n\n#Petróleo #GestãoEmpresarial #Geopolítica #Economia #EmpresáriosBrasileiros #Implasverde" },
+          { plat: "YouTube Shorts", tipo: "Short", cat: "reap", titulo: "Reaproveitamento do vídeo do feed", grav: "REAPROVEITAMENTO", duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
+        ]},
+        { dia: "Quarta", data: "Quarta publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Vídeo", cat: "guerra", titulo: "Estreito de Ormuz: o gargalo que pode encarecer tudo que você vende no supermercado", grav: "GRAVAR",
+            duracao: "60-80 segundos", tom: "Didático e objetivo. Explica um conceito geoeconômico de forma simples, sem juízo de valor sobre os países envolvidos.",
+            roteiro: ["GANCHO (0-3s): 'Existe um trecho de mar de menos de 40 km de largura que, se fechar, encarece quase tudo que você vende no seu supermercado. Esse lugar se chama Estreito de Ormuz.'","DESENVOLVIMENTO (4-55s): 'Cerca de 20% de todo o petróleo do mundo passa por esse estreito. Ele fica entre o Irã e os Emirados Árabes — uma das regiões mais estratégicas do planeta do ponto de vista econômico. Quando há tensão política ou militar na área, o mercado global reage imediatamente: o preço do petróleo sobe. E quando o petróleo sobe, sobe também a resina plástica, o combustível, o frete e os alimentos. Tudo isso chega direto na sua operação — seja você dono de supermercado, indústria ou qualquer outro negócio.'","CTA (56-75s): 'Você sabia disso? Comenta aqui. Me segue — toda semana eu explico como o mercado global impacta o seu negócio.'"],
+            legenda: "40 km de mar que influenciam o preço de quase tudo. 🌊\n\nO Estreito de Ormuz é um dos pontos mais estratégicos do comércio global de petróleo — e qualquer instabilidade econômica ou política na região chega ao varejo em forma de custo mais alto.\n\nVocê sabia disso? Comenta aqui. 👇\n\n#EstreitodeOrmuz #OrienteMédio #Petróleo #VarejoNordeste #Geopolítica #Implasverde" },
+          { plat: "YouTube Shorts", tipo: "Short", cat: "reap", titulo: "Reaproveitamento do vídeo do feed", grav: "REAPROVEITAMENTO", duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
+        ]},
+        { dia: "Sexta", data: "Quinto conteúdo", pubs: [
+          { plat: "YouTube", tipo: "Vídeo Longo", cat: "youtube", titulo: "Como a instabilidade no Oriente Médio afeta o varejo supermercadista brasileiro", grav: "GRAVAR (horizontal)",
+            duracao: "10-12 minutos", tom: "Aprofundado e analítico. Márcio em ambiente profissional. Abordagem econômica e imparcial — foco no impacto para o empresário brasileiro.",
+            roteiro: ["ABERTURA (0-1min): 'Nesse vídeo eu vou te mostrar, passo a passo, como uma instabilidade no Oriente Médio chega até o preço da embalagem do supermercado. É um caminho que poucos empresários conhecem — e entender isso pode mudar a forma como você compra e precifica.'","BLOCO 1 — O conflito em contexto econômico (1-3min): 'Não vou entrar no mérito de quem está certo ou errado nesse conflito — isso não é o que importa para o empresário. O que importa é entender os atores econômicos envolvidos e as consequências para o mercado de energia global: petróleo mais caro, dólar mais alto, frete mais caro, matéria-prima mais cara.'","BLOCO 2 — O Estreito de Ormuz e as rotas marítimas (3-5min): 'Cerca de 20% do petróleo mundial passa pelo Estreito de Ormuz. Qualquer ameaça de bloqueio dessa rota — seja por conflito, seja por sanção — eleva o custo do seguro marítimo, reduz a oferta e faz o preço do barril subir.'","BLOCO 3 — Do petróleo à embalagem (5-8min): 'Petróleo refinado gera nafta. Nafta processada gera resina plástica — PP, PE, PET. Resina plástica é a matéria-prima de toda embalagem flexível. Quando o barril sobe, a resina sobe. Quando a resina sobe, a embalagem sobe. Esse caminho leva de 30 a 90 dias para chegar ao varejo.'","BLOCO 4 — O que o empresário pode fazer (8-10min): 'Três estratégias práticas: 1) Monitorar o preço do petróleo semanalmente. 2) Antecipar compras de embalagem quando o cenário sinalizar alta. 3) Manter relacionamento com um fornecedor que monitore esse mercado por você.'","FECHAMENTO (10-12min): 'Se você quer um fornecedor estratégico de embalagens para o seu supermercado, o link está na descrição. Se inscreve no canal e ativa o sino — toda semana tem conteúdo como esse.'"],
+            legenda: "O guia completo para entender como a instabilidade no Oriente Médio chega até o seu supermercado. 🌍\n\n00:00 Introdução\n01:00 O conflito em contexto econômico\n03:00 O Estreito de Ormuz e as rotas marítimas\n05:00 Do petróleo à embalagem\n08:00 O que o empresário pode fazer\n10:00 Como a Implasverde protege o cliente" }
+        ]}
+      ]
+    },
+    {
+      num: 3, tema: "Soluções Implasverde + Embalagem e Sustentabilidade",
+      dias: [
+        { dia: "Segunda", data: "Sexta publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Vídeo", cat: "implasverde", titulo: "Sacola, saco ou embalagem flexível? Entenda a diferença e como escolher certo", grav: "GRAVAR",
+            duracao: "60-80 segundos", tom: "Didático e prático. Márcio pode segurar cada tipo de embalagem enquanto explica.",
+            roteiro: ["GANCHO (0-3s): 'Sacola, saco e embalagem flexível não são a mesma coisa — e comprar errado pode sair mais caro do que você imagina.'","DESENVOLVIMENTO (4-55s): 'Sacola: é o que o cliente usa na saída do caixa. Tem alça, precisa de resistência e é onde a sua marca aparece. Saco: usado dentro da loja — no açougue, na padaria, no hortifrúti. Precisa de espessura e vedação adequadas para cada produto. Embalagem flexível: é a solução personalizada — para granel, congelados, delivery, produto com marca própria. Cada uma tem uma aplicação específica. Usar a errada significa desperdício de material, reclamação de cliente ou custo desnecessário.'","CTA (56-75s): 'A Implasverde tem todas essas soluções e nosso time indica a embalagem certa para cada seção do seu supermercado. Me conta nos comentários qual você usa hoje.'"],
+            legenda: "Você está comprando a embalagem certa para cada seção do seu supermercado? 🛒\n\nA escolha correta reduz desperdício, melhora a apresentação do produto e protege a sua marca — sem aumentar custo.\n\nComenta aqui qual tipo você usa mais. 👇\n\n#EmbalagemFlexível #Sacolas #SacoPlástico #VarejoNordeste #Supermercado #Implasverde" },
+          { plat: "YouTube Shorts", tipo: "Short", cat: "reap", titulo: "Reaproveitamento do vídeo do feed", grav: "REAPROVEITAMENTO", duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
+        ]},
+        { dia: "Quarta", data: "Sétima publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Carrossel", cat: "guerra", titulo: "Como a alta do petróleo afeta o preço de tudo que você vende no supermercado", grav: "ARTE",
+            duracao: "7 slides", tom: "Educativo e econômico. Foco no impacto para o varejista — sem entrar no mérito do conflito em si.",
+            roteiro: ["SLIDE 1 — CAPA: 'Como a alta do petróleo afeta o preço de tudo que você vende no supermercado'","SLIDE 2: 'Tudo começa no barril de petróleo' — Quando o preço do barril sobe no mercado internacional, uma reação em cadeia começa. Combustível, matéria-prima industrial e frete são os primeiros a sentir.","SLIDE 3: 'O frete encarece' — Caminhões, navios e aviões rodam a combustível derivado de petróleo. Quando o barril sobe, o frete sobe junto — e o custo de transporte de tudo que chega ao seu supermercado aumenta.","SLIDE 4: 'A embalagem fica mais cara' — Embalagens plásticas são feitas de resina derivada do petróleo. Alta no barril = alta na resina = alta na embalagem. Esse impacto chega ao varejo em 30 a 90 dias.","SLIDE 5: 'Os alimentos industrializados sobem' — Indústrias de alimentos também usam embalagens, energia e frete. Quando esses custos sobem, o preço do produto na gôndola sobe junto.","SLIDE 6: 'O dólar tende a subir junto' — Instabilidade global valoriza o dólar frente ao real. Produtos importados e insumos cotados em dólar ficam mais caros — impactando toda a cadeia do varejo.","SLIDE 7 — CTA: 'Entender esse mecanismo é o primeiro passo para se antecipar e proteger a margem do seu negócio. Acompanhe esse tipo de análise aqui.' + logo Implasverde"],
+            legenda: "Quando o petróleo sobe no mercado internacional, o impacto chega até a gôndola do seu supermercado. 🛢️\n\nSalva esse carrossel e compartilha com quem precisa entender essa dinâmica. 👆\n\n#Petróleo #VarejoSupermercadista #GestãoEmpresarial #EmbalagemPlástica #Implasverde #Economia" }
+        ]},
+        { dia: "Sexta", data: "Oitava publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Carrossel", cat: "implasverde", titulo: "Embalagem plástica x sustentabilidade: o que você precisa saber antes de decidir", grav: "ARTE",
+            duracao: "6 slides", tom: "Sóbrio e informativo. Visual com dados e tipografia limpa.",
+            roteiro: ["SLIDE 1 — CAPA: 'Embalagem plástica x sustentabilidade: o debate que todo varejista precisa entender'","SLIDE 2: 'O plástico tem um problema de descarte — não de uso' — O plástico é um material eficiente, leve e seguro. O problema está no descarte incorreto. A embalagem certa, descartada corretamente, tem impacto muito menor do que parece.","SLIDE 3: 'Embalagem plástica desperdiça menos alimento' — Estudos mostram que embalagens plásticas preservam alimentos por mais tempo, reduzindo o desperdício — um dos maiores problemas ambientais do varejo.","SLIDE 4: 'O plástico reciclável já existe — e a Implasverde trabalha com ele' — Parte das resinas utilizadas na produção já admite reciclagem. O setor avança para soluções mais sustentáveis sem abrir mão da qualidade.","SLIDE 5: 'A pressão regulatória vem aí — se prepare' — Legislações sobre embalagem plástica estão avançando no Brasil. Conhecer as alternativas hoje é vantagem competitiva amanhã.","SLIDE 6 — CTA: 'A Implasverde acompanha essas tendências para oferecer sempre a melhor solução para o seu negócio.' + contato e logo"],
+            legenda: "O debate sobre sustentabilidade e plástico é complexo — e o varejista precisa entender os dois lados antes de tomar decisão. ♻️\n\nA Implasverde trabalha com soluções que equilibram qualidade, custo e responsabilidade ambiental.\n\nSalva esse carrossel. 👆\n\n#Sustentabilidade #EmbalagemPlástica #Reciclagem #VarejoNordeste #Implasverde #EmbalagemSustentável" }
+        ]}
+      ]
+    },
+    {
+      num: 4, tema: "Autoridade + Fechamento do Mês",
+      dias: [
+        { dia: "Segunda", data: "Nona publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Vídeo", cat: "implasverde", titulo: "Como a Implasverde garante fornecimento mesmo com crise no petróleo", grav: "GRAVAR",
+            duracao: "60-80 segundos", tom: "Confiante e estratégico. Márcio fala como empresário que resolve problemas.",
+            roteiro: ["GANCHO (0-3s): 'O petróleo subiu, o dólar subiu, a tensão no Oriente Médio aumentou — então por que a Implasverde continuou entregando no prazo e com preço estável? Eu vou te contar.'","DESENVOLVIMENTO (4-55s): 'A gente monitora o mercado de commodities com antecedência. Quando vemos sinal de alta no petróleo — seja por instabilidade geopolítica, seja por variação cambial — antecipamos a compra de resina. Formamos estoque estratégico. Isso nos permite absorver parte da variação sem repassar tudo ao cliente de uma vez. Além disso, nossa produção é aqui no Nordeste. Não dependemos de produto importado acabado — só de matéria-prima. Isso nos dá vantagem real em prazo e custo de frete para o varejo da região.'","CTA (56-75s): 'Se você quer um fornecedor que pensa junto com o seu negócio e não te deixa na mão na hora da crise — fala com a Implasverde. Link na bio.'"],
+            legenda: "Na crise, o fornecedor certo faz toda a diferença. 📊\n\nA Implasverde monitora o mercado global para proteger o varejo de surpresas no custo e no prazo de embalagens.\n\nQuer saber como podemos ser seu fornecedor estratégico? Me manda uma mensagem. 👇\n\n#Implasverde #EmbalagemPlástica #VarejoNordeste #Fornecedor #Supermercado #NordesteBrasil" },
+          { plat: "YouTube Shorts", tipo: "Short", cat: "reap", titulo: "Reaproveitamento do vídeo do feed", grav: "REAPROVEITAMENTO", duracao: "60s", tom: "", roteiro: ["Mesmo vídeo do Instagram Feed."], legenda: "Mesma legenda do Instagram." }
+        ]},
+        { dia: "Quarta", data: "Décima publicação", pubs: [
+          { plat: "Instagram Feed", tipo: "Carrossel", cat: "implasverde", titulo: "7 vantagens de comprar embalagens direto da indústria (sem intermediários)", grav: "ARTE",
+            duracao: "8 slides", tom: "Tom de consultoria. Cada vantagem com visual simples e argumento objetivo.",
+            roteiro: ["SLIDE 1 — CAPA: '7 vantagens de comprar embalagens direto da indústria — sem intermediários'","SLIDE 2: 'Preço de fábrica' — Sem margem de distribuidor ou representante. O que você paga vai direto para o produto, não para o intermediário.","SLIDE 3: 'Personalização real' — Sua marca impressa, espessura sob medida, tamanho ideal para o seu produto. Só a indústria consegue fazer isso.","SLIDE 4: 'Estoque disponível' — Indústria produz sob demanda e mantém estoque. Distribuidor depende do que tem em prateleira.","SLIDE 5: 'Prazo previsível' — Você fala com quem produz. Não tem repasse de informação, não tem surpresa de prazo.","SLIDE 6: 'Relacionamento direto' — Quando tem problema, você fala com quem resolve. Sem passar por três pessoas antes de ter uma resposta.","SLIDE 7: 'Planejamento conjunto' — A indústria consegue planejar sua demanda, antecipar variações de preço e te avisar antes que o mercado te pegue de surpresa.","SLIDE 8 — CTA: 'A Implasverde é indústria, no Nordeste, atendendo o varejo supermercadista. Pede seu orçamento.' + contato"],
+            legenda: "Cada intermediário entre você e a indústria custa dinheiro do seu bolso — todo mês. 💰\n\nComprar direto da Implasverde significa preço de fábrica, produto personalizado e atendimento de quem realmente conhece o que fabrica.\n\nSalva esse carrossel. 👆\n\n#Implasverde #EmbalagemPersonalizada #VarejoNordeste #ComprasDiretasDaIndústria #Supermercado" }
+        ]},
+        { dia: "Sexta", data: "Décima primeira e décima segunda publicações", pubs: [
+          { plat: "YouTube", tipo: "Vídeo Longo", cat: "youtube", titulo: "Embalagem personalizada: o que é, como funciona e por que pode transformar o seu negócio", grav: "GRAVAR (horizontal)",
+            duracao: "12-15 minutos", tom: "Técnico e educativo, mas acessível. Márcio fala como especialista do setor. Pode usar embalagens físicas como apoio visual.",
+            roteiro: ["ABERTURA (0-1min): 'Nesse vídeo eu vou te mostrar algo que a maioria dos varejistas nunca parou para pensar: a embalagem que você coloca no produto é a última comunicação que a sua marca tem com o cliente. E quando ela é personalizada, ela vende sozinha. Vou te explicar como funciona, quanto custa e por que vale a pena.'","BLOCO 1 — O que é embalagem personalizada (1-3min): 'Embalagem personalizada não significa necessariamente embalagem cara ou complexa. Significa uma embalagem desenvolvida para o seu produto, com as suas medidas, a sua identidade visual e as suas especificações técnicas. A personalização começa onde a embalagem genérica termina.'","BLOCO 2 — Tipos de personalização possíveis (3-6min): 'Existem diferentes níveis: 1) Impressão de marca e identidade visual. 2) Dimensões sob medida para o produto. 3) Espessura e resistência específica por aplicação. 4) Cor, acabamento e textura. 5) Texto regulatório ou informativo impresso. Cada camada de personalização agrega valor percebido ao produto e à marca.'","BLOCO 3 — Impacto no negócio (6-9min): 'Três impactos diretos: 1) Experiência do cliente — a embalagem é parte do produto. 2) Redução de desperdício — embalagem com dimensão certa gera menos sobra. 3) Diferenciação competitiva — no varejo, a embalagem é um diferencial visual imediato.'","BLOCO 4 — Como calcular se vale a pena (9-12min): 'A personalização começa a ser viável a partir de determinados volumes mínimos de pedido. O cálculo deve considerar: custo por unidade, impacto na percepção de marca, diferença no ticket médio e fidelização de cliente.'","FECHAMENTO (12-15min): 'A embalagem personalizada não é luxo — é estratégia. Se você quer entender se faz sentido para o seu negócio, o primeiro passo é uma conversa. O link está na descrição. Se inscreve no canal — tem muito mais conteúdo técnico sobre embalagens vindo por aí.'"],
+            legenda: "A embalagem que você usa no seu produto diz muito sobre a sua marca — e a personalizada diz ainda mais. 📦\n\n00:00 Introdução\n01:00 O que é embalagem personalizada\n03:00 Tipos de personalização possíveis\n06:00 Impacto no negócio\n09:00 Como calcular se vale a pena\n12:00 Próximos passos" },
+          { plat: "Instagram Feed", tipo: "Vídeo", cat: "guerra", titulo: "Dólar subiu, petróleo subiu — o que o varejista deve fazer agora?", grav: "GRAVAR",
+            duracao: "70-90 segundos", tom: "Prático e direto. Márcio fala como empresário que já viveu esse cenário — sem entrar no mérito do conflito geopolítico.",
+            roteiro: ["GANCHO (0-3s): 'Dólar subiu. Petróleo subiu. Instabilidade global aumentou. E agora — o que você, varejista, deve fazer?'","DESENVOLVIMENTO (4-60s): 'Primeiro: não entre em pânico. Esse tipo de movimento já aconteceu antes e vai acontecer de novo. A diferença está em quem se prepara e quem reage. Segundo: revise seu estoque de insumos críticos — embalagem, descartável, produto importado. Se você tem capital de giro, esse é o momento de antecipar compras antes que o repasse de preço chegue até você. Terceiro: converse com seus fornecedores. Pergunte se já tem previsão de reajuste, qual o prazo e se tem como travar um preço por volume. Quarto: acompanhe seus indicadores de custo semanalmente — não mensalmente. Quando o mercado se move rápido, quem olha o custo todo mês chega tarde.'","CTA (61-80s): 'Esse tipo de análise prática é o que eu trago aqui toda semana. Me segue para não perder. Comenta: qual desses passos você já coloca em prática?'"],
+            legenda: "Instabilidade global no mercado de energia — e o varejista precisa saber o que fazer. 📊\n\nQuatro ações práticas para proteger a margem do seu negócio quando o dólar e o petróleo sobem.\n\nComenta qual você já coloca em prática. 👇\n\n#VarejoSupermercadista #GestãoEmpresarial #Petróleo #Dólar #EmbalagemPlástica #Implasverde #Supermercado" }
+        ]}
+      ]
+    }
+  ],
+  stories: [
+    { icon: "🌍", title: "Notícias do Oriente Médio", text: "Sempre que surgir uma notícia relevante sobre o conflito — variação do petróleo, sanções, movimentos econômicos — publique nos stories com uma opinião rápida de 2 a 3 linhas. Foco no impacto econômico para o empresário brasileiro. Mantenha imparcialidade sobre os lados do conflito." },
+    { icon: "🏭", title: "Rotina de trabalho na Implasverde", text: "Fotos e vídeos curtos do dia a dia da fábrica: embalagens prontas, equipe em ação, processo de entrega. Humaniza a empresa e gera proximidade com o cliente. Não precisa ser produção profissional — celular está ótimo." },
+    { icon: "👨‍👩‍👧‍👦", title: "Momentos com a família", text: "Fotos com a família — almoço de domingo, viagem, aniversário, momento de lazer. Humaniza o Márcio como pessoa, não só como empresário. Gera identificação com outros empreendedores que também equilibram família e negócio." },
+    { icon: "🏃", title: "Esportes e estilo de vida", text: "Fotos ou vídeos praticando esportes — academia, corrida, futebol, qualquer atividade. Transmite disciplina, energia e saúde — atributos que o público associa a lideranças de negócio. Pode usar frases curtas de motivação empresarial como legenda." },
+    { icon: "💬", title: "Engajamento e interação", text: "Enquetes de opinião sobre temas do mercado, caixas de perguntas sobre embalagens ou economia, contagem regressiva para publicações novas. Use pelo menos 2 elementos interativos por semana para manter o algoritmo ativo." },
+    { icon: "📦", title: "Produtos e bastidores Implasverde", text: "Fotos de embalagens prontas, novos produtos, amostras para clientes. Conteúdo comercial leve — não é anúncio, é bastidor. Pode incluir depoimento rápido de cliente filmado na visita ou enviado por mensagem." }
+  ]
+};
+
+const catColors = { guerra: "#888", implasverde: "#e5e5e5", youtube: "#aaa", reap: "#2a2a2a" };
+const catLabels = { guerra: "ORIENTE MÉDIO", implasverde: "IMPLASVERDE", youtube: "YOUTUBE LONGO", reap: "REAPROVEITAMENTO" };
+const gravLabels = { "GRAVAR": "🎬 GRAVAR", "REAPROVEITAMENTO": "♻️ REAPROVEITAMENTO", "ARTE": "🎨 ARTE", "GRAVAR (horizontal)": "🎬 GRAVAR HORIZONTAL" };
+
+let currentWeek = 0;
+
+function countPubs(week) {
+  return week.dias.reduce((a,d) => a + d.pubs.filter(p => p.cat !== "reap").length, 0);
+}
+function countGrav(week) {
+  return week.dias.reduce((a,d) => a + d.pubs.filter(p => p.grav.includes("GRAVAR")).length, 0);
+}
+function countReap(week) {
+  return week.dias.reduce((a,d) => a + d.pubs.filter(p => p.grav === "REAPROVEITAMENTO").length, 0);
+}
+function countArte(week) {
+  return week.dias.reduce((a,d) => a + d.pubs.filter(p => p.grav === "ARTE").length, 0);
 }
 
-function DiaBlock({ dia }) {
-  return (
-    <div style={{ marginBottom: 24 }}>
-      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 12 }}>
-        <div style={{ width: 2, height: 14, background: "#1a1a1a", borderRadius: 2 }} />
-        <span style={{ fontSize: 10, color: "#333", letterSpacing: 2, textTransform: "uppercase", fontWeight: 700 }}>{dia.dia} — {dia.data}</span>
+function buildCard(pub) {
+  const isReap = pub.cat === "reap";
+  const id = "copy_" + Math.random().toString(36).substr(2,9);
+  let copyHtml = "";
+  if (!isReap) {
+    const rotLines = pub.roteiro.map((l,i) =>
+      `<div class="roteiro-item"><span class="roteiro-num">${String(i+1).padStart(2,"0")}</span><span class="roteiro-text">${l}</span></div>`
+    ).join("");
+    copyHtml = `<div class="copy-body" id="${id}">
+      <div class="copy-meta">
+        <span>⏱ ${pub.duracao}</span>
+        ${pub.tom ? `<span>TOM: ${pub.tom}</span>` : ""}
       </div>
-      {dia.publicacoes.map((pub, i) => <Card key={i} pub={pub} />)}
-    </div>
-  );
-}
-
-export default function App() {
-  const [aba, setAba] = useState("feed");
-  const [semanaAtiva, setSemanaAtiva] = useState(0);
-
-  const totalVideos = semanas.reduce((acc, s) => acc + s.dias.reduce((a, d) =>
-    a + d.publicacoes.filter(p => p.gravacao === "GRAVAR" || p.gravacao === "GRAVAR (horizontal)").length, 0), 0);
-  const totalArtes = semanas.reduce((acc, s) => acc + s.dias.reduce((a, d) =>
-    a + d.publicacoes.filter(p => p.gravacao === "ARTE").length, 0), 0);
-  const totalPublicacoes = semanas.reduce((acc, s) => acc + s.dias.reduce((a, d) =>
-    a + d.publicacoes.filter(p => p.categoria !== "reaproveitamento").length, 0), 0);
-
-  return (
-    <div style={{ minHeight: "100vh", background: "#080808", color: "#e5e5e5", fontFamily: "'Segoe UI', system-ui, sans-serif" }}>
-      <div style={{ height: 3, background: "linear-gradient(90deg, #f97316, #ea580c)" }} />
-
-      <div style={{ background: "#0d0d0d", borderBottom: "1px solid #1a1a1a", padding: "32px 28px 28px" }}>
-        <div style={{ maxWidth: 860, margin: "0 auto" }}>
-          <div style={{ fontSize: 10, letterSpacing: 3, color: "#f97316", fontWeight: 700, textTransform: "uppercase", marginBottom: 12 }}>◆ Agência Ângelo</div>
-          <h1 style={{ margin: "0 0 6px", fontSize: 24, fontWeight: 800, color: "#fff", letterSpacing: -0.5 }}>Planejamento de Conteúdo</h1>
-          <p style={{ margin: 0, fontSize: 12, color: "#444", letterSpacing: 2, textTransform: "uppercase" }}>Márcio Souza · Implasverde · 1 Mês Completo</p>
-          <div style={{ display: "flex", gap: 1, marginTop: 28, background: "#1a1a1a", borderRadius: 10, overflow: "hidden" }}>
-            {[
-              { label: "PUBLICAÇÕES ÚNICAS", valor: totalPublicacoes },
-              { label: "VÍDEOS A GRAVAR", valor: totalVideos },
-              { label: "ARTES / CARROSSEIS", valor: totalArtes },
-              { label: "DIAS DE GRAVAÇÃO", valor: "2" },
-            ].map((item, i) => (
-              <div key={i} style={{ flex: 1, background: "#0d0d0d", padding: "16px 20px" }}>
-                <p style={{ margin: "0 0 6px", fontSize: 9, color: "#333", letterSpacing: 2, fontWeight: 700 }}>{item.label}</p>
-                <p style={{ margin: 0, fontSize: 22, fontWeight: 900, color: "#fff" }}>{item.valor}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <div class="roteiro-title">${pub.tipo === "Carrossel" ? "ROTEIRO DOS SLIDES" : pub.tipo === "Vídeo Longo" ? "ROTEIRO DO VÍDEO YOUTUBE" : "ROTEIRO DO VÍDEO"}</div>
+      ${rotLines}
+      <div class="legenda-box">
+        <div class="legenda-label">LEGENDA</div>
+        <div class="legenda-text">${pub.legenda}</div>
       </div>
-
-      <div style={{ maxWidth: 860, margin: "0 auto", padding: "32px 28px" }}>
-        <div style={{ background: "#0d0d0d", border: "1px solid #1a1a1a", borderLeft: "2px solid #f97316", borderRadius: 10, padding: 18, marginBottom: 28 }}>
-          <p style={{ margin: "0 0 8px", fontSize: 10, color: "#f97316", fontWeight: 800, letterSpacing: 2, textTransform: "uppercase" }}>Estratégia de Gravação em Lote</p>
-          <p style={{ margin: 0, fontSize: 12, color: "#555", lineHeight: 1.9 }}>
-            <strong style={{ color: "#888" }}>Dia 1 —</strong> Todos os vídeos verticais do mês em sequência (Instagram + Shorts). &nbsp;
-            <strong style={{ color: "#888" }}>Dia 2 —</strong> Os 2 vídeos horizontais longos do YouTube. &nbsp;
-            <strong style={{ color: "#888" }}>Artes e carrosseis —</strong> produzidos pela Agência Ângelo sem presença do Márcio. &nbsp;
-            <strong style={{ color: "#888" }}>Stories —</strong> espontâneos, feitos com celular no dia a dia.
-          </p>
+    </div>`;
+  }
+  return `<div class="card">
+    <div class="card-header">
+      <div style="flex:1">
+        <div class="card-meta">
+          <span class="cat-label" style="color:${catColors[pub.cat]}">${catLabels[pub.cat]}</span>
+          <span class="card-platform">· ${pub.plat} · ${pub.tipo}</span>
         </div>
-
-        <div style={{ display: "flex", borderBottom: "1px solid #1a1a1a", marginBottom: 28 }}>
-          {[{ id: "feed", label: "Feed & YouTube" }, { id: "stories", label: "Stories" }].map(t => (
-            <button key={t.id} onClick={() => setAba(t.id)} style={{
-              background: "none", border: "none",
-              borderBottom: aba === t.id ? "2px solid #f97316" : "2px solid transparent",
-              color: aba === t.id ? "#f97316" : "#333",
-              padding: "12px 24px", fontSize: 11, fontWeight: 700,
-              letterSpacing: 2, textTransform: "uppercase", cursor: "pointer", transition: "all 0.15s", marginBottom: -1
-            }}>{t.label}</button>
-          ))}
-        </div>
-
-        {aba === "feed" && (
-          <div>
-            <div style={{ display: "flex", borderBottom: "1px solid #111", marginBottom: 24 }}>
-              {semanas.map((s, i) => (
-                <button key={i} onClick={() => setSemanaAtiva(i)} style={{
-                  background: "none", border: "none",
-                  borderBottom: semanaAtiva === i ? "2px solid #333" : "2px solid transparent",
-                  color: semanaAtiva === i ? "#888" : "#2a2a2a",
-                  padding: "10px 20px", fontSize: 10, fontWeight: 700,
-                  letterSpacing: 2, textTransform: "uppercase", cursor: "pointer", marginBottom: -1
-                }}>Semana {s.num}</button>
-              ))}
-            </div>
-            <div style={{ marginBottom: 24 }}>
-              <p style={{ margin: "0 0 6px", fontSize: 9, color: "#333", letterSpacing: 2, fontWeight: 700, textTransform: "uppercase" }}>Tema da Semana</p>
-              <p style={{ margin: 0, fontSize: 15, color: "#ccc", fontWeight: 600 }}>{semanas[semanaAtiva].tema}</p>
-            </div>
-            {semanas[semanaAtiva].dias.map((dia, i) => <DiaBlock key={i} dia={dia} />)}
-            <div style={{ background: "#0d0d0d", border: "1px solid #111", borderRadius: 10, padding: 20, marginTop: 8 }}>
-              <p style={{ margin: "0 0 16px", fontSize: 9, color: "#2a2a2a", letterSpacing: 2, fontWeight: 700, textTransform: "uppercase" }}>Resumo — Semana {semanas[semanaAtiva].num}</p>
-              <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
-                {[
-                  { label: "Publicações únicas", valor: semanas[semanaAtiva].dias.reduce((a, d) => a + d.publicacoes.filter(p => p.categoria !== "reaproveitamento").length, 0) },
-                  { label: "Vídeos a gravar", valor: semanas[semanaAtiva].dias.reduce((a, d) => a + d.publicacoes.filter(p => p.gravacao.includes("GRAVAR")).length, 0) },
-                  { label: "Reaproveitamentos", valor: semanas[semanaAtiva].dias.reduce((a, d) => a + d.publicacoes.filter(p => p.gravacao === "REAPROVEITAMENTO").length, 0) },
-                  { label: "Artes", valor: semanas[semanaAtiva].dias.reduce((a, d) => a + d.publicacoes.filter(p => p.gravacao === "ARTE").length, 0) },
-                ].map((item, i) => (
-                  <div key={i}>
-                    <p style={{ margin: "0 0 4px", fontSize: 9, color: "#333", letterSpacing: 1 }}>{item.label}</p>
-                    <p style={{ margin: 0, fontSize: 22, fontWeight: 900, color: "#fff" }}>{item.valor}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {aba === "stories" && (
-          <div>
-            <div style={{ background: "#0d0d0d", border: "1px solid #1a1a1a", borderLeft: "2px solid #333", borderRadius: 10, padding: 24, marginBottom: 24 }}>
-              <p style={{ margin: "0 0 8px", fontSize: 10, color: "#333", letterSpacing: 3, fontWeight: 700, textTransform: "uppercase" }}>Em planejamento</p>
-              <p style={{ margin: "0 0 10px", fontSize: 16, fontWeight: 700, color: "#555" }}>Estratégia de Stories</p>
-              <p style={{ margin: 0, fontSize: 12, color: "#333", lineHeight: 1.9 }}>
-                O planejamento detalhado de stories está sendo alinhado internamente e em breve será disponibilizado aqui com roteiro semana a semana. Enquanto isso, utilize as orientações básicas abaixo para manter presença diária no perfil.
-              </p>
-            </div>
-
-            <p style={{ margin: "0 0 16px", fontSize: 9, color: "#333", letterSpacing: 3, fontWeight: 700, textTransform: "uppercase" }}>Orientações básicas enquanto o planejamento não é finalizado</p>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-              {storiesOrientacoes.map((item, i) => (
-                <div key={i} style={{ background: "#0f0f0f", border: "1px solid #1a1a1a", borderRadius: 10, padding: "16px 20px", display: "grid", gridTemplateColumns: "36px 1fr", gap: 16 }}>
-                  <div style={{ fontSize: 20, paddingTop: 2 }}>{item.icone}</div>
-                  <div>
-                    <p style={{ margin: "0 0 6px", fontSize: 12, color: "#ccc", fontWeight: 700 }}>{item.titulo}</p>
-                    <p style={{ margin: 0, fontSize: 12, color: "#555", lineHeight: 1.8 }}>{item.descricao}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+        <div class="card-title${isReap?" reap":""}">${pub.titulo}</div>
       </div>
-
-      <div style={{ borderTop: "1px solid #111", padding: "20px 28px", display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: 20 }}>
-        <span style={{ fontSize: 10, fontWeight: 800, color: "#f97316", letterSpacing: 2 }}>◆ AGÊNCIA ÂNGELO</span>
-        <span style={{ fontSize: 10, color: "#1a1a1a", letterSpacing: 1 }}>IMPLASVERDE · PLANEJAMENTO MENSAL DE CONTEÚDO</span>
+      <div class="card-right">
+        <span class="grav-label">${gravLabels[pub.grav]}</span>
+        ${!isReap ? `<button class="copy-btn" onclick="toggleCopy('${id}',this)">VER COPY</button>` : ""}
       </div>
     </div>
-  );
+    ${copyHtml}
+  </div>`;
 }
+
+function toggleCopy(id, btn) {
+  const el = document.getElementById(id);
+  const open = el.classList.toggle("open");
+  btn.textContent = open ? "FECHAR" : "VER COPY";
+}
+
+function renderWeek(idx) {
+  currentWeek = idx;
+  const w = data.semanas[idx];
+  document.getElementById("week-theme").textContent = w.tema;
+  document.getElementById("summary-label").textContent = "Resumo — Semana " + w.num;
+
+  const tabs = document.getElementById("week-tabs");
+  tabs.innerHTML = data.semanas.map((s,i) =>
+    `<button class="week-btn${i===idx?" active":""}" onclick="renderWeek(${i})">Semana ${s.num}</button>`
+  ).join("");
+
+  const content = document.getElementById("week-content");
+  content.innerHTML = w.dias.map(d => `
+    <div class="day-block">
+      <div class="day-label"><div class="day-bar"></div><span class="day-text">${d.dia} — ${d.data}</span></div>
+      ${d.pubs.map(p => buildCard(p)).join("")}
+    </div>
+  `).join("");
+
+  const sg = document.getElementById("summary-grid");
+  sg.innerHTML = [
+    { label: "Publicações únicas", val: countPubs(w) },
+    { label: "Vídeos a gravar", val: countGrav(w) },
+    { label: "Reaproveitamentos", val: countReap(w) },
+    { label: "Artes", val: countArte(w) },
+  ].map(i => `<div class="summary-item"><p>${i.label}</p><p>${i.val}</p></div>`).join("");
+}
+
+function switchTab(id) {
+  document.querySelectorAll(".tab-btn").forEach((b,i) => b.classList.toggle("active", ["feed","stories"][i]===id));
+  document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+  document.getElementById("panel-"+id).classList.add("active");
+}
+
+function init() {
+  const totalPub = data.semanas.reduce((a,s) => a + countPubs(s), 0);
+  const totalVid = data.semanas.reduce((a,s) => a + countGrav(s), 0);
+  const totalArt = data.semanas.reduce((a,s) => a + countArte(s), 0);
+  document.getElementById("total-pub").textContent = totalPub;
+  document.getElementById("total-vid").textContent = totalVid;
+  document.getElementById("total-art").textContent = totalArt;
+
+  document.getElementById("stories-list").innerHTML = data.stories.map(s => `
+    <div class="orientacao-card">
+      <div class="orientacao-icon">${s.icon}</div>
+      <div>
+        <div class="orientacao-title">${s.title}</div>
+        <div class="orientacao-text">${s.text}</div>
+      </div>
+    </div>
+  `).join("");
+
+  renderWeek(0);
+}
+
+init();
+</script>
+</body>
+</html>
